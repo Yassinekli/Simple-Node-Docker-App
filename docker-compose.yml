@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  node:
+    build: .
+    container_name: node-web-app
+    restart: always
+    ports: 
+      - "8080:3000"
+    expose: 
+      - "3000"
+    volumes: 
+      - C:\Users\HP\Desktop\test\docker-practice-1:/usr/src/app
+    links:
+      - mongo
+    command: "npm start"
+  
+  mongo:
+    image: mongo
+    container_name: mongo-db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: 123456
